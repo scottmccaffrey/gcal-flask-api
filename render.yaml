@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: gcal-flask-api
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python app.py"
+    envVars:
+      - key: GOOGLE_CLIENT_SECRET_JSON
+        value: '{{ contents of your client_secret.json base64-encoded or paste directly if short }}'
