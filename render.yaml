@@ -3,8 +3,9 @@ services:
     name: gcal-flask-api
     env: python
     plan: free
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python app.py"
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
     envVars:
-      - key: GOOGLE_CLIENT_SECRET_JSON
-        value: '{{ contents of your client_secret.json base64-encoded or paste directly if short }}'
+      - key: OAUTHLIB_INSECURE_TRANSPORT
+        value: "1"
+
